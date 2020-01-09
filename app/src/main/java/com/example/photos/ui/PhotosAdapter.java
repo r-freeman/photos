@@ -43,7 +43,7 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final PhotoEntity photo = mPhotos.get(position);
         holder.mImageView.setContentDescription(photo.getTitle());
-        holder.mImageView.setImageResource(getPhotoId(this.mContext, photo.getFileName()));
+        holder.mImageView.setImageResource(getPhotoId(this.mContext, photo.getThumbnail()));
     }
 
     @Override

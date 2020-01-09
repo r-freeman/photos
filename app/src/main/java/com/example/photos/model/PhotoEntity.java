@@ -3,19 +3,22 @@ package com.example.photos.model;
 public class PhotoEntity {
     private int id;
     private String title;
+    private String thumbnail;
     private String fileName;
 
     public PhotoEntity() {
     }
 
-    public PhotoEntity(int id, String title, String fileName) {
+    public PhotoEntity(int id, String title, String thumbnail, String fileName) {
         this.id = id;
         this.title = title;
+        this.thumbnail = thumbnail;
         this.fileName = fileName;
     }
 
-    public PhotoEntity(String title, String fileName) {
+    public PhotoEntity(String title, String thumbnail, String fileName) {
         this.title = title;
+        this.thumbnail = thumbnail;
         this.fileName = fileName;
     }
 
@@ -35,6 +38,14 @@ public class PhotoEntity {
         this.title = title;
     }
 
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+
     public String getFileName() {
         return fileName;
     }
@@ -48,6 +59,7 @@ public class PhotoEntity {
         return "PhotoEntity{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
+                ", thumbnail='" + thumbnail + '\'' +
                 ", fileName='" + fileName + '\'' +
                 '}';
     }
