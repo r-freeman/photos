@@ -1,6 +1,7 @@
 package com.example.photos.ui;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,15 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder
         final PhotoEntity photo = mPhotos.get(position);
         holder.mImageView.setContentDescription(photo.getTitle());
         holder.mImageView.setImageResource(getPhotoId(this.mContext, photo.getThumbnail()));
+
+        holder.mImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("Photos", "Photo " + photo.getId() + " was clicked");
+
+
+            }
+        });
     }
 
     @Override
