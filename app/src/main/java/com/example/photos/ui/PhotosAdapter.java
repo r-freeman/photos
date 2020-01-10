@@ -1,6 +1,7 @@
 package com.example.photos.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.photos.PhotoActivity;
 import com.example.photos.R;
 import com.example.photos.model.PhotoEntity;
 
@@ -51,7 +53,9 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder
             public void onClick(View v) {
                 Log.i("Photos", "Photo " + photo.getId() + " was clicked");
 
-
+                Intent intent = new Intent(mContext, PhotoActivity.class);
+                intent.putExtra("photo_id", photo.getId());
+                mContext.startActivity(intent);
             }
         });
     }
