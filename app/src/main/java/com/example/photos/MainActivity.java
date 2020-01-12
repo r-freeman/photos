@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.os.Bundle;
 
-import com.example.photos.model.PhotoEntity;
+import com.example.photos.database.PhotoEntity;
 import com.example.photos.ui.PhotosAdapter;
 import com.example.photos.utilities.SampleData;
 

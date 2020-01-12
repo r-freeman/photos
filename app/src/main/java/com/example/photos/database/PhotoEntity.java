@@ -1,4 +1,4 @@
-package com.example.photos.model;
+package com.example.photos.database;
 
 import androidx.room.Entity;
 import androidx.room.Ignore;

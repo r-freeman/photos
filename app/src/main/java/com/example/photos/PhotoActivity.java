@@ -11,7 +11,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
-import com.example.photos.model.PhotoEntity;
+import com.example.photos.database.PhotoEntity;
 import com.example.photos.utilities.SampleData;
 
 import java.util.ArrayList;

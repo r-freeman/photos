@@ -1,6 +1,6 @@
 package com.example.photos.utilities;
 
-import com.example.photos.model.PhotoEntity;
+import com.example.photos.database.PhotoEntity;
 
 import java.util.ArrayList;
 import java.util.List;
