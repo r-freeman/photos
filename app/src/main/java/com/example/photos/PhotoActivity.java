@@ -10,10 +10,13 @@ import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 
+import com.example.photos.utilities.Constants;
 import java.util.Objects;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static com.example.photos.utilities.Constants.PHOTO_ID;
 
 public class PhotoActivity extends AppCompatActivity {
 
@@ -32,7 +35,12 @@ public class PhotoActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        Intent intent = getIntent();
+        Bundle extras = getIntent().getExtras();
+
+        if(extras != null) {
+            int photoId = extras.getInt(PHOTO_ID);
+            Log.i("Photo", "Got " + photoId + " from MainActivity");
+        }
     }
 
     @Override

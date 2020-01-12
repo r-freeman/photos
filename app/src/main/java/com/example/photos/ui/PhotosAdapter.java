@@ -14,11 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.photos.PhotoActivity;
 import com.example.photos.R;
 import com.example.photos.model.PhotoEntity;
+import com.example.photos.utilities.Constants;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static com.example.photos.utilities.Constants.PHOTO_ID;
 
 public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder> {
 
@@ -54,7 +57,7 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder
                 Log.i("Photos", "Photo " + photo.getId() + " was clicked");
 
                 Intent intent = new Intent(mContext, PhotoActivity.class);
-                intent.putExtra("photo_id", photo.getId());
+                intent.putExtra(PHOTO_ID, photo.getId());
                 mContext.startActivity(intent);
             }
         });
