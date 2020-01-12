@@ -20,15 +20,15 @@ public interface PhotoDao {
     @Delete
     void deleteNote(PhotoEntity photoEntity);
 
-    @Query("SELECT * FROM photos WHERE id = :id")
+    @Query("SELECT * FROM liked_photos WHERE id = :id")
     PhotoEntity getPhotoById(int id);
 
-    @Query("SELECT * FROM photos")
+    @Query("SELECT * FROM liked_photos")
     LiveData<List<PhotoEntity>> getAll();
 
-    @Query("DELETE FROM photos")
+    @Query("DELETE FROM liked_photos")
     int deleteAll();
 
-    @Query("SELECT COUNT(*) FROM photos")
+    @Query("SELECT COUNT(*) FROM liked_photos")
     int getCount();
 }

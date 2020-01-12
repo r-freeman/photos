@@ -5,7 +5,7 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 // define the table name for Room
-@Entity(tableName = "photos")
+@Entity(tableName = "liked_photos")
 public class PhotoEntity {
 
     // define the primary key for Room
