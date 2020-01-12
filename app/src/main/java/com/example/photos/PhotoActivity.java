@@ -60,6 +60,7 @@ public class PhotoActivity extends AppCompatActivity {
                     mImageView.setImageResource(
                             getResources().getIdentifier(DRAWABLE_PATH + photo.getFileName(),
                                     null, getPackageName()));
+                    setTitle(photo.getTitle());
                     break;
                 }
             }
