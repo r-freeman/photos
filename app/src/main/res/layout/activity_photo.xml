@@ -28,6 +28,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
+        android:tint="@color/white"
+        app:elevation="0dp"
+        app:pressedTranslationZ="0dp"
+        app:rippleColor="@null"
         app:srcCompat="@drawable/ic_heart" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
