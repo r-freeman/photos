@@ -20,6 +20,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.example.photos.utilities.Constants.DRAWABLE_PATH;
 import static com.example.photos.utilities.Constants.PHOTO_ID;
 
 public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder> {
@@ -33,7 +34,7 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder
     }
 
     public static int getPhotoId(Context mContext, String photoFileName) {
-        return mContext.getResources().getIdentifier("drawable/" + photoFileName, null, mContext.getPackageName());
+        return mContext.getResources().getIdentifier(DRAWABLE_PATH + photoFileName, null, mContext.getPackageName());
     }
 
     @NonNull

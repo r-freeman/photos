@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import com.example.photos.model.PhotoEntity;
 import com.example.photos.ui.PhotosAdapter;
@@ -35,12 +34,6 @@ public class MainActivity extends AppCompatActivity {
 
         // load photosData ArrayList with photos from SampleData
         photosData.addAll(SampleData.getPhotos());
-
-        // output each PhotoEntity to Logcat
-        for (PhotoEntity photo :
-                photosData) {
-            Log.i("Photos", photo.toString());
-        }
     }
 
     private void initRecyclerView() {
