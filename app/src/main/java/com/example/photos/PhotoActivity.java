@@ -10,7 +10,6 @@ import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 
-import com.example.photos.utilities.Constants;
 import java.util.Objects;
 
 import butterknife.ButterKnife;

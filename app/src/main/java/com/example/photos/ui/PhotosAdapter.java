@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.photos.PhotoActivity;
 import com.example.photos.R;
 import com.example.photos.model.PhotoEntity;
-import com.example.photos.utilities.Constants;
 
 import java.util.List;
 
