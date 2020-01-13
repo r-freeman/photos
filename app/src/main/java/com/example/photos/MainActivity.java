@@ -96,6 +96,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void deleteAllPhotos() {
-
+        mViewModel.deleteAllPhotos();
     }
 }

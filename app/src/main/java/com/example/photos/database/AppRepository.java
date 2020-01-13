@@ -41,4 +41,13 @@ public class AppRepository {
     private LiveData<List<PhotoEntity>> getAllPhotos() {
         return mDb.photoDao().getAll();
     }
+
+    public void deleteAllPhotos() {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                mDb.photoDao().deleteAll();
+            }
+        });
+    }
 }
