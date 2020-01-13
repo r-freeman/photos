@@ -2,6 +2,8 @@ package com.example.photos.database;
 
 import android.content.Context;
 
+import androidx.lifecycle.LiveData;
+
 import com.example.photos.utilities.SampleData;
 
 import java.util.List;
@@ -11,7 +13,7 @@ import java.util.concurrent.Executors;
 public class AppRepository {
     private static AppRepository ourInstance;
 
-    public List<PhotoEntity> mPhotos;
+    public LiveData<List<PhotoEntity>> mPhotos;
     private AppDatabase mDb;
     private Executor executor = Executors.newSingleThreadExecutor();
 
@@ -23,8 +25,8 @@ public class AppRepository {
     }
 
     private AppRepository(Context context) {
-        mPhotos = SampleData.getPhotos();
         mDb = AppDatabase.getInstance(context);
+        mPhotos = getAllPhotos();
     }
 
     public void addSampleData() {
@@ -34,5 +36,9 @@ public class AppRepository {
                 mDb.photoDao().insertAll(SampleData.getPhotos());
             }
         });
+    }
+
+    private LiveData<List<PhotoEntity>> getAllPhotos() {
+        return mDb.photoDao().getAll();
     }
 }

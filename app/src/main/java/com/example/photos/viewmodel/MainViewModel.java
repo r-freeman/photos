@@ -4,6 +4,7 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 
 import com.example.photos.database.AppRepository;
 import com.example.photos.database.PhotoEntity;
@@ -11,7 +12,7 @@ import com.example.photos.database.PhotoEntity;
 import java.util.List;
 
 public class MainViewModel extends AndroidViewModel {
-    public List<PhotoEntity> mPhotos;
+    public LiveData<List<PhotoEntity>> mPhotos;
     private AppRepository mRepository;
 
     public MainViewModel(@NonNull Application application) {

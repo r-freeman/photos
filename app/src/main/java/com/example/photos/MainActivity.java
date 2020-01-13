@@ -2,6 +2,7 @@ package com.example.photos;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
@@ -36,25 +37,37 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(findViewById(R.id.toolbar_main));
 
         ButterKnife.bind(this);
-        initViewModel();
         initRecyclerView();
-
-        photosData.addAll(mViewModel.mPhotos);
+        initViewModel();
     }
 
     private void initViewModel() {
+        final Observer<List<PhotoEntity>> photosObserver =
+                new Observer<List<PhotoEntity>>() {
+                    @Override
+                    public void onChanged(List<PhotoEntity> photoEntities) {
+                        photosData.clear();
+                        photosData.addAll(photoEntities);
+
+                        if (mAdapter == null) {
+                            mAdapter = new PhotosAdapter(photosData, MainActivity.this);
+                            mRecyclerView.setAdapter(mAdapter);
+                        } else {
+                            mAdapter.notifyDataSetChanged();
+                        }
+                    }
+                };
         mViewModel = ViewModelProviders.of(this)
                 .get(MainViewModel.class);
+
+        mViewModel.mPhotos.observe(this, photosObserver);
     }
 
     private void initRecyclerView() {
         StaggeredGridLayoutManager layoutManager =
                 new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        mAdapter = new PhotosAdapter(photosData, this);
-
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setAdapter(mAdapter);
     }
 
     @Override
