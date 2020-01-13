@@ -59,6 +59,14 @@ public class DatabaseTest {
     }
 
     @Test
+    public void checkLikedPhotos() {
+        mDao.insertAll(SampleData.getPhotos());
+        int likedCount = mDao.getLikedCount();
+        Log.i(TAG, "checkLikedPhotos: count = " + likedCount);
+        assertEquals(0, likedCount);
+    }
+
+    @Test
     public void compareIds() {
         mDao.insertAll(SampleData.getPhotos());
         PhotoEntity fromDb = mDao.getPhotoById(1);
