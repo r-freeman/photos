@@ -1,6 +1,7 @@
 package com.example.photos;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
@@ -8,7 +9,7 @@ import android.os.Bundle;
 
 import com.example.photos.database.PhotoEntity;
 import com.example.photos.ui.PhotosAdapter;
-import com.example.photos.utilities.SampleData;
+import com.example.photos.viewmodel.MainViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private List<PhotoEntity> photosData = new ArrayList<>();
     private PhotosAdapter mAdapter;
+    private MainViewModel mViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +32,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
+        initViewModel();
         initRecyclerView();
 
-        // load photosData ArrayList with photos from SampleData
-        photosData.addAll(SampleData.getPhotos());
+
+        photosData.addAll(mViewModel.mPhotos);
+    }
+
+    private void initViewModel() {
+        mViewModel = ViewModelProviders.of(this)
+                .get(MainViewModel.class);
     }
 
     private void initRecyclerView() {
