@@ -26,6 +26,9 @@ public interface PhotoDao {
     @Query("SELECT * FROM photos")
     LiveData<List<PhotoEntity>> getAll();
 
+    @Query("SELECT * FROM photos WHERE liked = 1")
+    LiveData<List<PhotoEntity>> getAllLikedPhotos();
+
     @Query("DELETE FROM photos")
     int deleteAll();
 
