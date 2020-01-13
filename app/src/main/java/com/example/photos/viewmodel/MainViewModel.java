@@ -16,7 +16,11 @@ public class MainViewModel extends AndroidViewModel {
 
     public MainViewModel(@NonNull Application application) {
         super(application);
-        mRepository = AppRepository.getInstance();
+        mRepository = AppRepository.getInstance(application.getApplicationContext());
         mPhotos = mRepository.mPhotos;
+    }
+
+    public void addSampleData() {
+        mRepository.addSampleData();
     }
 }
