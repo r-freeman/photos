@@ -38,15 +38,15 @@ public class SampleData {
 
     public static List<PhotoEntity> getPhotos() {
         List<PhotoEntity> photos = new ArrayList<>();
-        photos.add(new PhotoEntity(0, SAMPLE_PHOTO_TITLE_0, SAMPLE_PHOTO_THUMBNAIL_0, SAMPLE_PHOTO_FILENAME_0));
-        photos.add(new PhotoEntity(1, SAMPLE_PHOTO_TITLE_1, SAMPLE_PHOTO_THUMBNAIL_1, SAMPLE_PHOTO_FILENAME_1));
-        photos.add(new PhotoEntity(2, SAMPLE_PHOTO_TITLE_2, SAMPLE_PHOTO_THUMBNAIL_2, SAMPLE_PHOTO_FILENAME_2));
-        photos.add(new PhotoEntity(3, SAMPLE_PHOTO_TITLE_3, SAMPLE_PHOTO_THUMBNAIL_3, SAMPLE_PHOTO_FILENAME_3));
-        photos.add(new PhotoEntity(4, SAMPLE_PHOTO_TITLE_4, SAMPLE_PHOTO_THUMBNAIL_4, SAMPLE_PHOTO_FILENAME_4));
-        photos.add(new PhotoEntity(5, SAMPLE_PHOTO_TITLE_5, SAMPLE_PHOTO_THUMBNAIL_5, SAMPLE_PHOTO_FILENAME_5));
-        photos.add(new PhotoEntity(6, SAMPLE_PHOTO_TITLE_6, SAMPLE_PHOTO_THUMBNAIL_6, SAMPLE_PHOTO_FILENAME_6));
-        photos.add(new PhotoEntity(7, SAMPLE_PHOTO_TITLE_7, SAMPLE_PHOTO_THUMBNAIL_7, SAMPLE_PHOTO_FILENAME_7));
-        photos.add(new PhotoEntity(8, SAMPLE_PHOTO_TITLE_8, SAMPLE_PHOTO_THUMBNAIL_8, SAMPLE_PHOTO_FILENAME_8));
+        photos.add(new PhotoEntity(SAMPLE_PHOTO_TITLE_0, SAMPLE_PHOTO_THUMBNAIL_0, SAMPLE_PHOTO_FILENAME_0, 0));
+        photos.add(new PhotoEntity(SAMPLE_PHOTO_TITLE_1, SAMPLE_PHOTO_THUMBNAIL_1, SAMPLE_PHOTO_FILENAME_1, 0));
+        photos.add(new PhotoEntity(SAMPLE_PHOTO_TITLE_2, SAMPLE_PHOTO_THUMBNAIL_2, SAMPLE_PHOTO_FILENAME_2, 0));
+        photos.add(new PhotoEntity(SAMPLE_PHOTO_TITLE_3, SAMPLE_PHOTO_THUMBNAIL_3, SAMPLE_PHOTO_FILENAME_3, 0));
+        photos.add(new PhotoEntity(SAMPLE_PHOTO_TITLE_4, SAMPLE_PHOTO_THUMBNAIL_4, SAMPLE_PHOTO_FILENAME_4, 0));
+        photos.add(new PhotoEntity(SAMPLE_PHOTO_TITLE_5, SAMPLE_PHOTO_THUMBNAIL_5, SAMPLE_PHOTO_FILENAME_5, 0));
+        photos.add(new PhotoEntity(SAMPLE_PHOTO_TITLE_6, SAMPLE_PHOTO_THUMBNAIL_6, SAMPLE_PHOTO_FILENAME_6, 0));
+        photos.add(new PhotoEntity(SAMPLE_PHOTO_TITLE_7, SAMPLE_PHOTO_THUMBNAIL_7, SAMPLE_PHOTO_FILENAME_7, 0));
+        photos.add(new PhotoEntity(SAMPLE_PHOTO_TITLE_8, SAMPLE_PHOTO_THUMBNAIL_8, SAMPLE_PHOTO_FILENAME_8,0));
         return photos;
     }
 }
