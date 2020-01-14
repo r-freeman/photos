@@ -12,10 +12,12 @@ import androidx.lifecycle.ViewModelProviders;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.example.photos.database.PhotoEntity;
 import com.example.photos.viewmodel.PhotoViewModel;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Objects;
 
@@ -33,8 +35,9 @@ public class PhotoActivity extends AppCompatActivity {
     ImageView mImageView;
 
     @OnClick(R.id.fab)
-    void fabClickHandler() {
-        Log.i("Photo", "fab was clicked");
+    void fabClickHandler(View view) {
+        Snackbar.make(view, "Added to favourites.", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
     }
 
     @Override
