@@ -6,13 +6,15 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
 import com.example.photos.database.PhotoEntity;
-import com.example.photos.utilities.SampleData;
+import com.example.photos.viewmodel.PhotoViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +28,7 @@ import static com.example.photos.utilities.Constants.DRAWABLE_PATH;
 import static com.example.photos.utilities.Constants.PHOTO_ID;
 
 public class PhotoActivity extends AppCompatActivity {
-
+    private PhotoViewModel mViewModel;
     private List<PhotoEntity> photosData = new ArrayList<>();
 
     @BindView(R.id.photo)
@@ -47,24 +49,34 @@ public class PhotoActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
+        initViewModel();
+    }
+
+    private void initViewModel() {
+        mViewModel = ViewModelProviders.of(this)
+                .get(PhotoViewModel.class);
+
+        mViewModel.mLivePhoto.observe(this,
+                new Observer<PhotoEntity>() {
+                    @Override
+                    public void onChanged(PhotoEntity photoEntity) {
+                        onPhotoUpdate(photoEntity);
+                    }
+                });
+
         Bundle extras = getIntent().getExtras();
-
-        photosData.addAll(SampleData.getPhotos());
-
         if (extras != null) {
             int photoId = extras.getInt(PHOTO_ID);
-            Log.i("Photo", "Got " + photoId + " from MainActivity");
-
-            for (PhotoEntity photo : photosData) {
-                if (photoId == photo.getId()) {
-                    mImageView.setImageResource(
-                            getResources().getIdentifier(DRAWABLE_PATH + photo.getFileName(),
-                                    null, getPackageName()));
-                    setTitle(photo.getTitle());
-                    break;
-                }
-            }
+            mViewModel.loadData(photoId);
         }
+    }
+
+    private void onPhotoUpdate(PhotoEntity photoEntity) {
+        mImageView.setImageResource(
+                getResources().getIdentifier(DRAWABLE_PATH + photoEntity.getFileName(),
+                        null, getPackageName())
+        );
+        setTitle(photoEntity.getTitle());
     }
 
     @Override

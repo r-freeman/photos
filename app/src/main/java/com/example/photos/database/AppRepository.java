@@ -50,4 +50,8 @@ public class AppRepository {
             }
         });
     }
+
+    public PhotoEntity getPhotoById(int photoId) {
+        return mDb.photoDao().getPhotoById(photoId);
+    }
 }
