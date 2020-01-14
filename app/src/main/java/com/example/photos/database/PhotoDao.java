@@ -18,7 +18,7 @@ public interface PhotoDao {
     void insertAll(List<PhotoEntity> photos);
 
     @Delete
-    void deleteNote(PhotoEntity photoEntity);
+    void deletePhoto(PhotoEntity photoEntity);
 
     @Query("SELECT * FROM photos WHERE id = :id")
     PhotoEntity getPhotoById(int id);
@@ -26,15 +26,15 @@ public interface PhotoDao {
     @Query("SELECT * FROM photos")
     LiveData<List<PhotoEntity>> getAll();
 
-    @Query("SELECT * FROM photos WHERE liked = 1")
-    LiveData<List<PhotoEntity>> getAllLikedPhotos();
+    @Query("SELECT * FROM photos WHERE favourite = 1")
+    LiveData<List<PhotoEntity>> getFavourtiePhotos();
 
     @Query("DELETE FROM photos")
     int deleteAll();
 
     @Query("SELECT COUNT(*) FROM photos")
-    int getCount();
+    int getPhotosCount();
 
-    @Query("SELECT COUNT(*) FROM photos where liked = 1")
-    int getLikedCount();
+    @Query("SELECT COUNT(*) FROM photos where favourite = 1")
+    int getFavouritePhotosCount();
 }

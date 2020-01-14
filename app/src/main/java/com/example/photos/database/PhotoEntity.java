@@ -15,7 +15,7 @@ public class PhotoEntity {
     private String title;
     private String thumbnail;
     private String fileName;
-    private int liked;
+    private int favourite;
 
     // tell Room to ignore this constructor
     @Ignore
@@ -23,21 +23,21 @@ public class PhotoEntity {
     }
 
     // Room will use this constructor
-    public PhotoEntity(int id, String title, String thumbnail, String fileName, int liked) {
+    public PhotoEntity(int id, String title, String thumbnail, String fileName, int favourite) {
         this.id = id;
         this.title = title;
         this.thumbnail = thumbnail;
         this.fileName = fileName;
-        this.liked = liked;
+        this.favourite = favourite;
     }
 
     // tell Room to ignore this constructor
     @Ignore
-    public PhotoEntity(String title, String thumbnail, String fileName, int liked) {
+    public PhotoEntity(String title, String thumbnail, String fileName, int favourite) {
         this.title = title;
         this.thumbnail = thumbnail;
         this.fileName = fileName;
-        this.liked = liked;
+        this.favourite = favourite;
     }
 
     public int getId() {
@@ -72,12 +72,12 @@ public class PhotoEntity {
         this.fileName = fileName;
     }
 
-    public int getLiked() {
-        return liked;
+    public int getFavourite() {
+        return favourite;
     }
 
-    public void setLiked(int liked) {
-        this.liked = liked;
+    public void setFavourite(int favourite) {
+        this.favourite = favourite;
     }
 
     @Override
@@ -87,7 +87,7 @@ public class PhotoEntity {
                 ", title='" + title + '\'' +
                 ", thumbnail='" + thumbnail + '\'' +
                 ", fileName='" + fileName + '\'' +
-                ", liked=" + liked +
+                ", favourite=" + favourite +
                 '}';
     }
 }

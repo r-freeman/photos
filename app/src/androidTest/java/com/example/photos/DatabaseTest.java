@@ -1,7 +1,6 @@
 package com.example.photos;
 
 import android.content.Context;
-import android.provider.ContactsContract;
 import android.util.Log;
 
 import androidx.room.Room;
@@ -45,7 +44,7 @@ public class DatabaseTest {
     @Test
     public void createAndRetrievePhotos() {
         mDao.insertAll(SampleData.getPhotos());
-        int count = mDao.getCount();
+        int count = mDao.getPhotosCount();
         Log.i(TAG, "createAndRetrievePhotos: count = " + count);
         assertEquals(SampleData.getPhotos().size(), count);
     }
@@ -59,10 +58,10 @@ public class DatabaseTest {
     }
 
     @Test
-    public void checkLikedPhotos() {
+    public void checkFavouritePhotosCount() {
         mDao.insertAll(SampleData.getPhotos());
-        int likedCount = mDao.getLikedCount();
-        Log.i(TAG, "checkLikedPhotos: count = " + likedCount);
+        int likedCount = mDao.getFavouritePhotosCount();
+        Log.i(TAG, "checkFavouritePhotosCount: count = " + likedCount);
         assertEquals(0, likedCount);
     }
 
