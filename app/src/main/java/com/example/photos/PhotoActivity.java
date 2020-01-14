@@ -10,14 +10,13 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
 import com.example.photos.database.PhotoEntity;
 import com.example.photos.viewmodel.PhotoViewModel;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 import butterknife.BindView;
@@ -29,7 +28,6 @@ import static com.example.photos.utilities.Constants.PHOTO_ID;
 
 public class PhotoActivity extends AppCompatActivity {
     private PhotoViewModel mViewModel;
-    private List<PhotoEntity> photosData = new ArrayList<>();
 
     @BindView(R.id.photo)
     ImageView mImageView;
@@ -80,13 +78,29 @@ public class PhotoActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_photo, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 startActivity(new Intent(this, MainActivity.class));
                 return true;
+            case R.id.action_share_photo:
+                onActionSharePhoto();
+                return true;
         }
 
         return false;
+    }
+
+    /**
+     * https://developer.android.com/training/sharing/send#send-binary-content
+     */
+    private void onActionSharePhoto() {
+
     }
 }

@@ -3,4 +3,5 @@
     <string name="title_activity_photo">PhotoActivity</string>
     <string name="add_sample_data">Add Sample Data</string>
     <string name="delete_all">Delete All</string>
+    <string name="share_photo">Share</string>
 </resources>
