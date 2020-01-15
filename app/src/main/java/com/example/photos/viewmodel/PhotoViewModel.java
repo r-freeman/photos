@@ -32,4 +32,16 @@ public class PhotoViewModel extends AndroidViewModel {
             }
         });
     }
+
+    public void toggleFavouritePhoto() {
+        PhotoEntity photo = mLivePhoto.getValue();
+        if (photo != null) {
+            if (photo.getFavourite() == 1) {
+                photo.setFavourite(0);
+            } else {
+                photo.setFavourite(1);
+            }
+            mRepository.insertPhoto(photo);
+        }
+    }
 }

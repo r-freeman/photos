@@ -9,7 +9,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +16,7 @@ import android.widget.ImageView;
 
 import com.example.photos.database.PhotoEntity;
 import com.example.photos.viewmodel.PhotoViewModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Objects;
@@ -30,14 +30,32 @@ import static com.example.photos.utilities.Constants.PHOTO_ID;
 
 public class PhotoActivity extends AppCompatActivity {
     private PhotoViewModel mViewModel;
+    private int favourite;
 
     @BindView(R.id.photo)
     ImageView mImageView;
 
+    @BindView(R.id.fab)
+    FloatingActionButton mFab;
+
     @OnClick(R.id.fab)
     void fabClickHandler(View view) {
-        Snackbar.make(view, "Added to favourites.", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
+        toggleFavouritePhoto();
+
+        if (favourite == 1) {
+            Snackbar.make(view, "Added photo to favourites.", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+        }
+    }
+
+    public void toggleFabIcon() {
+        favourite = Objects.requireNonNull(mViewModel.mLivePhoto.getValue()).getFavourite();
+
+        if (favourite == 1) {
+            mFab.setImageResource(R.drawable.ic_favorite_active);
+        } else {
+            mFab.setImageResource(R.drawable.ic_favorite_inactive);
+        }
     }
 
     @Override
@@ -78,6 +96,7 @@ public class PhotoActivity extends AppCompatActivity {
                         null, getPackageName())
         );
         setTitle(photoEntity.getTitle());
+        toggleFabIcon();
     }
 
     @Override
@@ -98,6 +117,11 @@ public class PhotoActivity extends AppCompatActivity {
         }
 
         return false;
+    }
+
+    private void toggleFavouritePhoto() {
+        mViewModel.toggleFavouritePhoto();
+        toggleFabIcon();
     }
 
     /**

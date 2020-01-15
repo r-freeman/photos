@@ -54,4 +54,13 @@ public class AppRepository {
     public PhotoEntity getPhotoById(int photoId) {
         return mDb.photoDao().getPhotoById(photoId);
     }
+
+    public void insertPhoto(final PhotoEntity photo) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                mDb.photoDao().insertPhoto(photo);
+            }
+        });
+    }
 }

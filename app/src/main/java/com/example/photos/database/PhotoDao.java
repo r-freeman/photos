@@ -27,7 +27,7 @@ public interface PhotoDao {
     LiveData<List<PhotoEntity>> getAll();
 
     @Query("SELECT * FROM photos WHERE favourite = 1")
-    LiveData<List<PhotoEntity>> getFavourtiePhotos();
+    LiveData<List<PhotoEntity>> getFavouritePhotos();
 
     @Query("DELETE FROM photos")
     int deleteAll();
