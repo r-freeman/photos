@@ -20,24 +20,6 @@
             app:popupTheme="@style/AppTheme.PopupOverlay"
             app:layout_scrollFlags="scroll|enterAlways|snap"/>
 
-        <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabs"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:tabIconTint="@color/white"
-                app:tabIndicatorColor="@color/colorAccent">
-
-                <com.google.android.material.tabs.TabItem
-                    android:icon="@drawable/ic_photo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <com.google.android.material.tabs.TabItem
-                    android:icon="@drawable/ic_favorite_inactive"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </com.google.android.material.tabs.TabLayout>
-
     </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/content_main" />
