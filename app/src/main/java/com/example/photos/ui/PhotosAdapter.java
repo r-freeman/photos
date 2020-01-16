@@ -1,8 +1,8 @@
 package com.example.photos.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.photos.PhotoActivity;
 import com.example.photos.R;
 import com.example.photos.database.PhotoEntity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -45,6 +46,7 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder
         return new ViewHolder(view);
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final PhotoEntity photo = mPhotos.get(position);
@@ -54,13 +56,17 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder
         holder.mImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("Photos", "Photo " + photo.getId() + " was clicked");
-
                 Intent intent = new Intent(mContext, PhotoActivity.class);
                 intent.putExtra(PHOTO_ID, photo.getId());
                 mContext.startActivity(intent);
             }
         });
+
+        if (photo.getFavourite() == 1) {
+            holder.mFab.setVisibility(View.VISIBLE);
+        } else {
+            holder.mFab.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -71,6 +77,9 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.photo)
         ImageView mImageView;
+
+        @BindView(R.id.favourite)
+        FloatingActionButton mFab;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
