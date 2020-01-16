@@ -44,4 +44,8 @@ public class PhotoViewModel extends AndroidViewModel {
             mRepository.insertPhoto(photo);
         }
     }
+
+    public void deletePhoto() {
+        mRepository.deletePhoto(mLivePhoto.getValue());
+    }
 }

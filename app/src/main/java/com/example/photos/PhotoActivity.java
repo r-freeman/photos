@@ -114,6 +114,9 @@ public class PhotoActivity extends AppCompatActivity {
             case R.id.action_share_photo:
                 onActionSharePhoto();
                 return true;
+            case R.id.action_delete_photo:
+                onActionDeletePhoto();
+                finish();
         }
 
         return false;
@@ -129,5 +132,9 @@ public class PhotoActivity extends AppCompatActivity {
      */
     private void onActionSharePhoto() {
 
+    }
+
+    private void onActionDeletePhoto() {
+        mViewModel.deletePhoto();
     }
 }

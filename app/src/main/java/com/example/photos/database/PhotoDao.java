@@ -1,5 +1,7 @@
 package com.example.photos.database;
 
+import android.provider.ContactsContract;
+
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -17,9 +19,6 @@ public interface PhotoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(List<PhotoEntity> photos);
 
-    @Delete
-    void deletePhoto(PhotoEntity photoEntity);
-
     @Query("SELECT * FROM photos WHERE id = :id")
     PhotoEntity getPhotoById(int id);
 
@@ -31,6 +30,9 @@ public interface PhotoDao {
 
     @Query("DELETE FROM photos")
     int deleteAll();
+
+    @Delete
+    void deletePhoto(PhotoEntity photoEntity);
 
     @Query("SELECT COUNT(*) FROM photos")
     int getPhotosCount();

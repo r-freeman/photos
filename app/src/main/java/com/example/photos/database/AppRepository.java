@@ -63,4 +63,13 @@ public class AppRepository {
             }
         });
     }
+
+    public void deletePhoto(final PhotoEntity photo) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                mDb.photoDao().deletePhoto(photo);
+            }
+        });
+    }
 }
