@@ -26,8 +26,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.example.photos.utilities.Constants.ACTION;
 import static com.example.photos.utilities.Constants.DRAWABLE_PATH;
 import static com.example.photos.utilities.Constants.PHOTO_ADDED_TO_FAVOURITES;
+import static com.example.photos.utilities.Constants.PHOTO_DELETED;
 import static com.example.photos.utilities.Constants.PHOTO_ID;
 
 public class PhotoActivity extends AppCompatActivity {
@@ -117,8 +119,10 @@ public class PhotoActivity extends AppCompatActivity {
                 return true;
             case R.id.action_delete_photo:
                 onActionDeletePhoto();
+                Intent intent = new Intent();
+                intent.putExtra(ACTION, PHOTO_DELETED);
                 // set result to OK, the MainActivity is listening for this event
-                setResult(Activity.RESULT_OK, new Intent());
+                setResult(Activity.RESULT_OK, intent);
                 finish();
         }
 

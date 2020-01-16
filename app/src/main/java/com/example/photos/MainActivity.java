@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,7 +28,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.example.photos.utilities.Constants.ACTION;
 import static com.example.photos.utilities.Constants.PHOTO_DELETED;
+import static com.example.photos.utilities.Constants.PHOTO_ID;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -79,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Listens for an activity result from the previous activity.
+     *
      * @param requestCode
      * @param resultCode
      * @param data
@@ -88,12 +93,25 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
             if (resultCode == Activity.RESULT_OK) {
-                View view = findViewById(android.R.id.content);
-                // photo was deleted let the user know by displaying a snackbar message
-                Snackbar.make(view,
-                        PHOTO_DELETED, Snackbar.LENGTH_LONG).show();
+                // get extras from the intent if any
+                Bundle extras = data != null ? data.getExtras() : null;
+                if (extras != null) {
+                    View view = findViewById(android.R.id.content);
+                    // check if the previous activity set an action string
+                    String action = extras.getString(ACTION);
+
+                    if (PHOTO_DELETED.equals(action)) {
+                        // photo was deleted let the user know by displaying a snackbar message
+                        displaySnackbar(view, PHOTO_DELETED);
+                    }
+                }
             }
         }
+    }
+
+    private void displaySnackbar(View view, String message) {
+        Snackbar.make(view,
+                message, Snackbar.LENGTH_LONG).show();
     }
 
     @Override
