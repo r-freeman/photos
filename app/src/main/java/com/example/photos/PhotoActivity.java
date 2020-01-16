@@ -1,5 +1,6 @@
 package com.example.photos;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -26,6 +27,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 import static com.example.photos.utilities.Constants.DRAWABLE_PATH;
+import static com.example.photos.utilities.Constants.PHOTO_ADDED_TO_FAVOURITES;
 import static com.example.photos.utilities.Constants.PHOTO_ID;
 
 public class PhotoActivity extends AppCompatActivity {
@@ -43,8 +45,7 @@ public class PhotoActivity extends AppCompatActivity {
         toggleFavouritePhoto();
 
         if (favourite == 1) {
-            Snackbar.make(view, "Added photo to favourites.", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();
+            Snackbar.make(view, PHOTO_ADDED_TO_FAVOURITES, Snackbar.LENGTH_LONG).show();
         }
     }
 
@@ -116,6 +117,8 @@ public class PhotoActivity extends AppCompatActivity {
                 return true;
             case R.id.action_delete_photo:
                 onActionDeletePhoto();
+                // set result to OK, the MainActivity is listening for this event
+                setResult(Activity.RESULT_OK, new Intent());
                 finish();
         }
 

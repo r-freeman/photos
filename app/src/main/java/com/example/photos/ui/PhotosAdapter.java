@@ -1,6 +1,7 @@
 package com.example.photos.ui;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -58,7 +59,11 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, PhotoActivity.class);
                 intent.putExtra(PHOTO_ID, photo.getId());
-                mContext.startActivity(intent);
+
+                if(mContext instanceof Activity) {
+                    // start the PhotoActivity and expect a result from an interaction within that activity
+                    ((Activity) mContext).startActivityForResult(intent, 1);
+                }
             }
         });
 
