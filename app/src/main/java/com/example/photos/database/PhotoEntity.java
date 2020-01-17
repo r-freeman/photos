@@ -4,11 +4,16 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-// define the table name for Room
+/**
+ * The PhotoEntity class is using Room annotations here to mirror
+ */
+
+// define the table name that the PhotoEntity class represents
 @Entity(tableName = "photos")
 public class PhotoEntity {
 
-    // define the primary key for Room
+    // Using the @PrimaryKey annotation to define the primary key variable for Room
+    // autoGenerate = true means that the id will auto increment.
     @PrimaryKey(autoGenerate = true)
     private int id;
 
@@ -17,12 +22,12 @@ public class PhotoEntity {
     private String fileName;
     private int favourite;
 
-    // tell Room to ignore this constructor
+    // @Ignore annotations means Room will ignore this constructor
     @Ignore
     public PhotoEntity() {
     }
 
-    // Room will use this constructor
+    // Room will use this constructor that doesn't have @Ignore annotation
     public PhotoEntity(int id, String title, String thumbnail, String fileName, int favourite) {
         this.id = id;
         this.title = title;
@@ -31,7 +36,7 @@ public class PhotoEntity {
         this.favourite = favourite;
     }
 
-    // tell Room to ignore this constructor
+    // @Ignore annotations means Room will ignore this constructor
     @Ignore
     public PhotoEntity(String title, String thumbnail, String fileName, int favourite) {
         this.title = title;
@@ -39,6 +44,8 @@ public class PhotoEntity {
         this.fileName = fileName;
         this.favourite = favourite;
     }
+
+    /********************** getters and setters *************************/
 
     public int getId() {
         return id;

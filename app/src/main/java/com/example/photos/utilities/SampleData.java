@@ -5,6 +5,10 @@ import com.example.photos.database.PhotoEntity;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Sample data for the application, in a real application we would pull this data from an API
+ * The fileName and thumbnail attributes point to images placed in the drawable folder.
+ */
 public class SampleData {
     private static final String SAMPLE_PHOTO_TITLE_0 = "Belfry of Bruges";
     private static final String SAMPLE_PHOTO_TITLE_1 = "Walking across the city park";
