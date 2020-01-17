@@ -2,6 +2,7 @@ package com.example.photos;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -114,8 +115,8 @@ public class PhotoActivity extends AppCompatActivity {
             case android.R.id.home:
                 startActivity(new Intent(this, MainActivity.class));
                 return true;
-            case R.id.action_share_photo:
-                onActionSharePhoto();
+            case R.id.action_send_photo:
+                onActionSendPhoto();
                 return true;
             case R.id.action_delete_photo:
                 onActionDeletePhoto();
@@ -134,11 +135,14 @@ public class PhotoActivity extends AppCompatActivity {
         toggleFabIcon();
     }
 
-    /**
-     * https://developer.android.com/training/sharing/send#send-binary-content
-     */
-    private void onActionSharePhoto() {
-
+    private void onActionSendPhoto() {
+        Uri imageUri = Uri.parse("android.resource://" +
+                getPackageName() + "/" + DRAWABLE_PATH + Objects.requireNonNull(mViewModel.mLivePhoto.getValue()).getFileName());
+        Intent send = new Intent();
+        send.setAction(Intent.ACTION_SEND);
+        send.putExtra(Intent.EXTRA_STREAM, imageUri);
+        send.setType("image/jpeg");
+        startActivity(Intent.createChooser(send, "Send to"));
     }
 
     private void onActionDeletePhoto() {

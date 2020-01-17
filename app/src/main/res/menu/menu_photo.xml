@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.photos.PhotoActivity">
 
-    <item android:id="@+id/action_share_photo"
-        android:title="@string/share_photo"
+    <item android:id="@+id/action_send_photo"
+        android:title="@string/send_photo"
         android:orderInCategory="100"
         app:showAsAction="never" />
 

@@ -11,8 +11,6 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Message;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,8 +28,6 @@ import butterknife.ButterKnife;
 
 import static com.example.photos.utilities.Constants.ACTION;
 import static com.example.photos.utilities.Constants.PHOTO_DELETED;
-import static com.example.photos.utilities.Constants.PHOTO_ID;
-
 
 public class MainActivity extends AppCompatActivity {
     @BindView(R.id.recycler_view)
